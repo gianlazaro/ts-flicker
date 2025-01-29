@@ -3,6 +3,9 @@ import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
 import { postsQueryOptions } from '../utils/posts'
 
 export const Route = createFileRoute('/posts')({
+  beforeLoad: ()=> {
+    return {data: 123}
+  },
   loader: async ({ context }) => {
     await context.queryClient.ensureQueryData(postsQueryOptions())
   },
